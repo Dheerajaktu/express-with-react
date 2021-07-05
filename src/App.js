@@ -4,14 +4,21 @@ import Header from './myComponents/Header';
 import { Footer } from './myComponents/Footer';
 import { Todos } from './myComponents/Todos';
 import { useState } from 'react';
-
+import { AddTodo } from './myComponents/AddTodo';
 function App() {
   const onDelete = (data) => {
-    console.log('---I am on delete---', data);
     setTodos(todos.filter((val) => {
-      console.log('---filter---', val, data);
       return val !== data;
     }));
+  }
+  const addTodo = (title, desc) => {
+    let sno = todos[todos.length - 1].sno + 1;
+    const myTodo = {
+      sno: sno,
+      title: title,
+      desc: desc
+    }
+    setTodos([...todos, myTodo]);
   }
   const [todos, setTodos] = useState(
     [
@@ -35,6 +42,7 @@ function App() {
   return (
     <>
       <Header title="My Todo List" />
+      <AddTodo addTodo={addTodo} />
       <Todos todoParentData={todos} onDelete={onDelete} />
       <Footer />
 
