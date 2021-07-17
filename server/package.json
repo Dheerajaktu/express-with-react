@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "start": "node index.js",
+        "build": "cd client && npm install && npm run build"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
